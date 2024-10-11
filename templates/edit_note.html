@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block  content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="container position-relative">
+            <div class="card col-12 col-lg-5 col-md-6 col-sm-6 px-4 py-4 my-5 position-absolute start-50 translate-middle-x text-center">
+
+                <h1 class="card-title mb-4">Изменение заметки "{{note_name}}"</h1>
+
+                <form class="form" method="post" action="/edit_note/{{note_id}}">
+                    <div class="mb-4 mt-2">
+                        <label for="note_name" class="form-label">Название заметки</label>
+                        <input type="text" class="form-control" id="note_name" name="new_title" value="{{note_name}}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="note_text" class="form-label">Текст заметки</label>
+                        <textarea class="form-control" id="note_text" rows="5" name="new_note_text">{{note_text}}</textarea>
+                    </div>
+                    <button class="btn btn-primary mt-1">Изменить</button>
+                </form>
+                {% if message %}
+                <p class="mt-3 alert alert-danger">{{message}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
